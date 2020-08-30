@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.cpp
+date.hpp
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+ctime
+-
+stdio.h
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/stdio.h
+iostream
+-
+
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+

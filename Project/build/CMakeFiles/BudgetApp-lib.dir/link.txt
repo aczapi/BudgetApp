@@ -1,0 +1,2 @@
+/usr/bin/ar qc libBudgetApp-lib.a  CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o CMakeFiles/BudgetApp-lib.dir/date.cpp.o
+/usr/bin/ranlib libBudgetApp-lib.a

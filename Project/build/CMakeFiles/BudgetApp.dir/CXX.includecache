@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/Markup.h
+stdlib.h
+-
+string.h
+-
+string
+-
+afx.h
+-
+
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/main.cpp
+iostream
+-
+date.hpp
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+Markup.h
+/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/Markup.h
+
