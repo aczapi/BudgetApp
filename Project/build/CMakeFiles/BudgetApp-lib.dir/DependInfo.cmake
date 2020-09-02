@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/Markup.cpp" "/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o"
-  "/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.cpp" "/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/date.cpp.o"
+  "/home/aga/Desktop/BudgetApp/BudgetApp/Project/Markup.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o"
+  "/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/date.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

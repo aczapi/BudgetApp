@@ -1,11 +1,21 @@
 #pragma once
 
+#include <string>
+#include <vector>
+
 class Date {
 public:
-    //class Invalid {};
+    enum class WrongDate {
+        Ok,
+        WrongFormat,
+        NotALeapYear,
+        BeforeLastDayOfCurrentMonth
+    };
+    std::string getWrongDateErrorMessage(WrongDate error);
+    WrongDate checkDates(Date& date, Date& today);
 
+    Date();
     Date(int year, int month, int day);
-    //~Date();
 
     Date Today(Date date);
 
@@ -19,7 +29,7 @@ public:
 
     bool isLeapYear(int year);
     bool isDateCorrect();
-    bool isBeforeLastDayOfActualMonth(const Date& date, const Date& today);
+    bool isBeforeLastDayOfCurrentMonth(const Date& date, const Date& today);
 
     void showDate() const;
 

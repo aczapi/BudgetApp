@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/Markup.h
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/Markup.h
 stdlib.h
 -
 string.h
@@ -16,13 +16,29 @@ string
 afx.h
 -
 
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+string
+-
+vector
+-
 
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/main.cpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/main.cpp
 iostream
 -
+vector
+-
 date.hpp
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/date.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+user.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/user.hpp
 Markup.h
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/Markup.h
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/Markup.h
+
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/user.hpp
+string
+-
+vector
+-
+date.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
 

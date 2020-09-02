@@ -1,13 +1,14 @@
 #include "date.hpp"
 #include <ctime>
+
 #include "stdio.h"
 
 #include <iostream>
 
+Date::Date(){};
+
 Date::Date(int year, int month, int day)
     : year_(year), month_(month), day_(day) {
-    // if (!isDateCorrect(year, month, day))
-    //     throw Invalid();
 }
 
 void Date::setYear(int year) {
@@ -75,7 +76,7 @@ bool Date::isDateCorrect() {
     return true;
 }
 
-bool Date::isBeforeLastDayOfActualMonth(const Date& date, const Date& today) {
+bool Date::isBeforeLastDayOfCurrentMonth(const Date& date, const Date& today) {
     if (date.year_ < today.year_)
         return true;
     if (date.year_ == today.year_ && date.month_ <= today.month_)
@@ -93,4 +94,34 @@ void Date::showDate() const {
         std::cout << year_ << "-0" << month_ << "-0" << day_ << '\n';
     if (month_ > 9 && day_ > 9)
         std::cout << year_ << "-" << month_ << "-" << day_ << '\n';
+}
+
+std::string Date::getWrongDateErrorMessage(WrongDate error) {
+    switch (error) {
+    case WrongDate::Ok:
+        return "OK";
+    case WrongDate::WrongFormat:
+        return "Date should be in format yyyy-mm-dd";
+    case WrongDate::NotALeapYear:
+        return "It is not a leap year";
+    case WrongDate::BeforeLastDayOfCurrentMonth:
+        return "Date has to be up to the last day of the current month";
+    }
+    return {};
+}
+
+Date::WrongDate Date::checkDates(Date& date, Date& today) {
+    int lastDayOfFebruaryInLeapYear = 29;
+    int secondMonth = 2;
+
+    if ((date.getDay() == lastDayOfFebruaryInLeapYear) && (date.getMonth() == secondMonth) && (!date.isLeapYear(date.getYear()))) {
+        return WrongDate::NotALeapYear;
+    }
+    if (!date.isDateCorrect()) {
+        return WrongDate::WrongFormat;
+    }
+    if (!date.isBeforeLastDayOfCurrentMonth(date, today)) {
+        return WrongDate::BeforeLastDayOfCurrentMonth;
+    }
+    return WrongDate::Ok;
 }

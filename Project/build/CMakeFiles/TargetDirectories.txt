@@ -1,4 +1,4 @@
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/rebuild_cache.dir
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/edit_cache.dir
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp.dir
-/home/aga/Desktop/C++/Projekt PP/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/rebuild_cache.dir
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/edit_cache.dir
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp.dir
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir
