@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>470</x>
+      <x>370</x>
       <y>0</y>
       <w>400</w>
       <h>280</h>
@@ -30,7 +30,7 @@ BudgetApplication()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
+      <x>520</x>
       <y>720</y>
       <w>170</w>
       <h>100</h>
@@ -48,7 +48,7 @@ BudgetApplication()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>50</x>
+      <x>0</x>
       <y>820</y>
       <w>290</w>
       <h>140</h>
@@ -65,7 +65,7 @@ BudgetApplication()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
+      <x>410</x>
       <y>840</y>
       <w>360</w>
       <h>140</h>
@@ -85,7 +85,7 @@ BudgetApplication()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
+      <x>850</x>
       <y>840</y>
       <w>330</w>
       <h>150</h>
@@ -105,8 +105,8 @@ BudgetApplication()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>410</y>
+      <x>890</x>
+      <y>440</y>
       <w>320</w>
       <h>240</h>
     </coordinates>
@@ -128,8 +128,8 @@ IncomeManager()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>200</y>
+      <x>820</x>
+      <y>270</y>
       <w>190</w>
       <h>140</h>
     </coordinates>
@@ -146,7 +146,7 @@ IncomeManager()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
+      <x>20</x>
       <y>290</y>
       <w>320</w>
       <h>240</h>
@@ -169,7 +169,7 @@ UserManager()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
+      <x>380</x>
       <y>470</y>
       <w>460</w>
       <h>240</h>
@@ -192,7 +192,7 @@ IncomeManager()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
+      <x>20</x>
       <y>130</y>
       <w>160</w>
       <h>140</h>
@@ -209,7 +209,7 @@ IncomeManager()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
+      <x>390</x>
       <y>310</y>
       <w>190</w>
       <h>140</h>
@@ -221,6 +221,33 @@ IncomeManager()
 - date : String
 - item : String
 - amount : Integer
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>10</y>
+      <w>670</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>Date
+--
++ WrongDate : enum class
+
+- year : Integer
+- month : Integer
+- day : Integer 
+
+--
++ getWrongDateErrorMessage(WrongDate error) : std::string
++ checkDates(Date&amp; date, Date&amp; today) : WrongDate
++ Today(Date date) : Date
++ isLeapYear(int year) : bool
++ isDateCorrect() : bool
++ isBeforeLastDayOfCurrentMonth(const Date&amp; date, const Date&amp; today) : bool
++ showDate() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
