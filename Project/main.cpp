@@ -1,6 +1,7 @@
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include "budgetApp.hpp"
 #include "date.hpp"
 #include "dateManager.hpp"
 #include "helpMethods.hpp"
@@ -10,6 +11,7 @@
 #include "Markup.h"
 
 int main() {
+    BudgetApplication budgetApplication;
     char choice;
 
     while (true) {
@@ -19,10 +21,10 @@ int main() {
 
             switch (choice) {
             case '1':
-
+                budgetApplication.userRegister();
                 break;
             case '2':
-
+                //budgetApplication.userLogIn();
                 break;
             case '9':
                 exit(0);

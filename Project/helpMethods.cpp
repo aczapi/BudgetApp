@@ -11,14 +11,14 @@ int HelpMethods::convertStringToInt(std::string stringToConvert) {
     return number;
 }
 char HelpMethods::getChar() {
-    std::string entry = "";
+    std::string input = "";
     char sign = {0};
 
     while (true) {
-        getline(std::cin, entry);
+        getline(std::cin, input);
 
-        if (entry.length() == 1) {
-            sign = entry[0];
+        if (input.length() == 1) {
+            sign = input[0];
             break;
         }
         std::cout << "It is not a single sign. Try again.\n";
@@ -28,7 +28,7 @@ char HelpMethods::getChar() {
 
 void HelpMethods::doPause() {
     std::cin.ignore();
-    std::cout << "\nPress the Enter key to continue.";
+    std::cout << "Press the Enter key to continue.";
     std::cin.get();
 }
 
@@ -46,4 +46,18 @@ char HelpMethods::chooseOptionFromMainMenu() {
     choice = getChar();
 
     return choice;
+}
+
+std::string HelpMethods::getLine() {
+    std::string input = "";
+    getline(std::cin, input);
+    return input;
+}
+
+std::string HelpMethods::changeFirstLetterToUpperCaseAndOthersToLowerCase(std::string input) {
+    if (!input.empty()) {
+        transform(input.begin(), input.end(), input.begin(), ::tolower);
+        input[0] = toupper(input[0]);
+    }
+    return input;
 }

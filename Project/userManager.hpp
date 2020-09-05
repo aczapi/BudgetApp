@@ -3,10 +3,29 @@
 #include <vector>
 #include "user.hpp"
 
+constexpr size_t MINIMUM_PASSWORD_LENGTH = 9;
 class UserManager {
 public:
-    UserManager();
-    void registerUser();
+    class Password {
+    public:
+        enum class ErrorCode {
+            Ok,
+            PasswordNeedsAtLeastNineCharacters,
+            PasswordNeedsAtLeastOneNumber,
+            PasswordNeedsAtLeastOneSpecialCharacter,
+            PasswordNeedsAtLeastOneUppercaseLetter,
+            PasswordsDoesNotMatch
+        };
+
+        static std::string getErrorMessage(const ErrorCode error);
+        static bool doesPasswordsMatch(const std::string& password, const std::string& repeatedPassword);
+        static ErrorCode checkPasswordRules(const std::string& password);
+        static ErrorCode checkPassword(const std::string& password, const std::string& repeatedPassword);
+    };
+
+    //UserManager();
+    void
+    userRegister();
     void userLogIn();
     void changeLoggedInUserPassword();
     void userLogOut();
@@ -20,5 +39,5 @@ private:
 
     User enterDataOfUser();
     int getNewUserId();
-    bool doesLoginExist(std::string loginToCheck);
+    bool doesLoginAlreadyExist(std::string loginToCheck);
 };
