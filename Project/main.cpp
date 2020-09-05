@@ -5,41 +5,67 @@
 #include "dateManager.hpp"
 #include "helpMethods.hpp"
 #include "user.hpp"
+#include "userManager.hpp"
 
 #include "Markup.h"
 
 int main() {
-    //Date date(2000, 12, 30);
+    char choice;
 
-    CMarkup xml;
-    bool fileExists = xml.Load("users.xml");
+    while (true) {
+        //if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
+        {
+            choice = HelpMethods::chooseOptionFromMainMenu();
 
-    if (!fileExists) {
-        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("Users");
+            switch (choice) {
+            case '1':
+
+                break;
+            case '2':
+
+                break;
+            case '9':
+                exit(0);
+                break;
+            default:
+                std::cout << "Not an option.\n";
+                HelpMethods::doPause();
+                break;
+            }
+        }
     }
 
-    std::string name = "";
-    std::cin >> name;
-    int userId = 0;
-    std::cin >> userId;
-    std::string surname = "";
-    std::cin >> surname;
-    std::string login = "";
-    std::cin >> login;
-    std::string password = "";
-    std::cin >> password;
+    //Date date(2000, 12, 30);
 
-    xml.FindElem();
-    xml.IntoElem();
-    xml.AddElem("User");
-    xml.IntoElem();
-    xml.AddElem("UserId", userId);
-    xml.AddElem("Name", name);
-    xml.AddElem("Surname", surname);
-    xml.AddElem("Login", login);
-    xml.AddElem("Password", password);
-    xml.Save("users.xml");
+    // CMarkup xml;
+    // bool fileExists = xml.Load("users.xml");
+
+    // if (!fileExists) {
+    //     xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    //     xml.AddElem("Users");
+    // }
+
+    // std::string name = "";
+    // std::cin >> name;
+    // int userId = 0;
+    // std::cin >> userId;
+    // std::string surname = "";
+    // std::cin >> surname;
+    // std::string login = "";
+    // std::cin >> login;
+    // std::string password = "";
+    // std::cin >> password;
+
+    // xml.FindElem();
+    // xml.IntoElem();
+    // xml.AddElem("User");
+    // xml.IntoElem();
+    // xml.AddElem("UserId", userId);
+    // xml.AddElem("Name", name);
+    // xml.AddElem("Surname", surname);
+    // xml.AddElem("Login", login);
+    // xml.AddElem("Password", password);
+    // xml.Save("users.xml");
 
     // //to get data //
     // std::string strFindName = "Aga";
@@ -165,18 +191,18 @@ int main() {
     //DateManager date;
     //auto today = date.getTodayDate();
 
-    DateManager dateToSet;
-    std::cout << "\n";
-    std::string enteredDate = "";
+    // DateManager dateToSet;
+    // std::cout << "\n";
+    // std::string enteredDate = "";
 
-    std::cout << "Enter date in format yyyy-mm-dd: \n";
-    std::cin >> enteredDate;
-    // dateToSet.getYear(enteredDate);
-    // dateToSet.getMonth(enteredDate);
-    // dateToSet.getDay(enteredDate);
+    // std::cout << "Enter date in format yyyy-mm-dd: \n";
+    // std::cin >> enteredDate;
+    // // dateToSet.getYear(enteredDate);
+    // // dateToSet.getMonth(enteredDate);
+    // // dateToSet.getDay(enteredDate);
 
-    auto result = dateToSet.checkDate(enteredDate);
-    std::cout << dateToSet.getWrongDateErrorMessage(result) << '\n';
+    // auto result = dateToSet.checkDate(enteredDate);
+    // std::cout << dateToSet.getWrongDateErrorMessage(result) << '\n';
 
     return 0;
 }
