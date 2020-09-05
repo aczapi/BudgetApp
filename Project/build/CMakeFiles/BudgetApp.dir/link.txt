@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/BudgetApp.dir/main.cpp.o  -o BudgetApp  libBudgetApp-lib.a 
