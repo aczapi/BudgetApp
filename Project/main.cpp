@@ -11,35 +11,35 @@
 int main() {
     //Date date(2000, 12, 30);
 
-    // CMarkup xml;
-    // bool fileExists = xml.Load("users.xml");
+    CMarkup xml;
+    bool fileExists = xml.Load("users.xml");
 
-    // if (!fileExists) {
-    //     xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    //     xml.AddElem("Users");
-    // }
+    if (!fileExists) {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Users");
+    }
 
-    // std::string name = "";
-    // std::cin >> name;
-    // int userId = 0;
-    // std::cin >> userId;
-    // std::string surname = "";
-    // std::cin >> surname;
-    // std::string login = "";
-    // std::cin >> login;
-    // std::string password = "";
-    // std::cin >> password;
+    std::string name = "";
+    std::cin >> name;
+    int userId = 0;
+    std::cin >> userId;
+    std::string surname = "";
+    std::cin >> surname;
+    std::string login = "";
+    std::cin >> login;
+    std::string password = "";
+    std::cin >> password;
 
-    // xml.FindElem();
-    // xml.IntoElem();
-    // xml.AddElem("User");
-    // xml.IntoElem();
-    // xml.AddElem("UserId", userId);
-    // xml.AddElem("Name", name);
-    // xml.AddElem("Surname", surname);
-    // xml.AddElem("Login", login);
-    // xml.AddElem("Password", password);
-    // xml.Save("users.xml");
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("User");
+    xml.IntoElem();
+    xml.AddElem("UserId", userId);
+    xml.AddElem("Name", name);
+    xml.AddElem("Surname", surname);
+    xml.AddElem("Login", login);
+    xml.AddElem("Password", password);
+    xml.Save("users.xml");
 
     // //to get data //
     // std::string strFindName = "Aga";
@@ -161,7 +161,7 @@ int main() {
     //         vectorOfDates[i].showDate();
     // }
 
-    // Date date;
+    //Date date;
     //DateManager date;
     //auto today = date.getTodayDate();
 
