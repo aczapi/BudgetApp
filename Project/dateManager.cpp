@@ -6,17 +6,6 @@
 #include "dateManager.hpp"
 #include "helpMethods.hpp"
 
-#include <algorithm>
-#include <sstream>
-
-int DateManager::convertStringToInt(std::string stringToConvert) {
-    int number;
-    std::istringstream iss(stringToConvert);
-    iss >> number;
-
-    return number;
-}
-
 DateManager::DateManager()
     : START_DATE_("2000-01-01"), SECONDS_PER_DAY_(86400) {
     today_ = getTodayDate();
@@ -35,7 +24,6 @@ Date DateManager::getTodayDate() {
 }
 
 int DateManager::getYear(std::string enteredDate) {
-    // HelpMethods helpMethods;  //change it later
     std::string year = "";
     int i = 0;
     const int numbersInYear = 4;
@@ -44,34 +32,32 @@ int DateManager::getYear(std::string enteredDate) {
         ++i;
     }
     if (year.length() == numbersInYear) {
-        return date_.year_ = DateManager::convertStringToInt(year);
+        return date_.year_ = HelpMethods::convertStringToInt(year);
 
     } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";  // WrongDate::WrongFormat;
+        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
     exit(0);
 }
 
 int DateManager::getMonth(std::string enteredDate) {
-    // HelpMethods helpMethods;  //change it later
     std::string month = "";
     int positionOfDash = 7;
     month = enteredDate.substr(5, 2);
     if (enteredDate[positionOfDash] == '-') {
-        return date_.month_ = DateManager::convertStringToInt(month);
+        return date_.month_ = HelpMethods::convertStringToInt(month);
     } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";  // WrongDate::WrongFormat;
+        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
     exit(0);
 }
 int DateManager::getDay(std::string enteredDate) {
-    //  HelpMethods helpMethods;  //change it later
     std::string day = "";
     const int numbersInDays = 2;
     day = enteredDate.substr(8, 2);
     if (day.length() == numbersInDays) {
-        return date_.day_ = DateManager::convertStringToInt(day);
+        return date_.day_ = HelpMethods::convertStringToInt(day);
 
     } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";  // WrongDate::WrongFormat;
+        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
     exit(0);
 }
 

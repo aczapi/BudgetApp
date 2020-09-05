@@ -25,12 +25,6 @@ public:
     bool isDateCorrect();
     bool isBeforeLastDayOfCurrentMonth(const Date& date, const Date& today);
 
-    //void showDate() const;
-    //std::ostream& showDate(std::ostream& out);
-
-    //helpMethods
-    int convertStringToInt(std::string stringToConvert);
-
 private:
     Date date_;
     Date today_;
