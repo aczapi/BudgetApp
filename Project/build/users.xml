@@ -21,4 +21,11 @@
 <Login>Aga</Login>
 <Password>123</Password>
 </User>
+<User>
+<UserId>0</UserId>
+<Name>q</Name>
+<Surname/>
+<Login/>
+<Password/>
+</User>
 </Users>

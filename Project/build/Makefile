@@ -190,6 +190,60 @@ date.cpp.s:
 	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/date.cpp.s
 .PHONY : date.cpp.s
 
+dateManager.o: dateManager.cpp.o
+
+.PHONY : dateManager.o
+
+# target to build an object file
+dateManager.cpp.o:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o
+.PHONY : dateManager.cpp.o
+
+dateManager.i: dateManager.cpp.i
+
+.PHONY : dateManager.i
+
+# target to preprocess a source file
+dateManager.cpp.i:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.i
+.PHONY : dateManager.cpp.i
+
+dateManager.s: dateManager.cpp.s
+
+.PHONY : dateManager.s
+
+# target to generate assembly for a file
+dateManager.cpp.s:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.s
+.PHONY : dateManager.cpp.s
+
+helpMethods.o: helpMethods.cpp.o
+
+.PHONY : helpMethods.o
+
+# target to build an object file
+helpMethods.cpp.o:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o
+.PHONY : helpMethods.cpp.o
+
+helpMethods.i: helpMethods.cpp.i
+
+.PHONY : helpMethods.i
+
+# target to preprocess a source file
+helpMethods.cpp.i:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.i
+.PHONY : helpMethods.cpp.i
+
+helpMethods.s: helpMethods.cpp.s
+
+.PHONY : helpMethods.s
+
+# target to generate assembly for a file
+helpMethods.cpp.s:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.s
+.PHONY : helpMethods.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -217,6 +271,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/BudgetApp.dir/build.make CMakeFiles/BudgetApp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+user.o: user.cpp.o
+
+.PHONY : user.o
+
+# target to build an object file
+user.cpp.o:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/user.cpp.o
+.PHONY : user.cpp.o
+
+user.i: user.cpp.i
+
+.PHONY : user.i
+
+# target to preprocess a source file
+user.cpp.i:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/user.cpp.i
+.PHONY : user.cpp.i
+
+user.s: user.cpp.s
+
+.PHONY : user.s
+
+# target to generate assembly for a file
+user.cpp.s:
+	$(MAKE) -f CMakeFiles/BudgetApp-lib.dir/build.make CMakeFiles/BudgetApp-lib.dir/user.cpp.s
+.PHONY : user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -233,9 +314,18 @@ help:
 	@echo "... date.o"
 	@echo "... date.i"
 	@echo "... date.s"
+	@echo "... dateManager.o"
+	@echo "... dateManager.i"
+	@echo "... dateManager.s"
+	@echo "... helpMethods.o"
+	@echo "... helpMethods.i"
+	@echo "... helpMethods.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... user.o"
+	@echo "... user.i"
+	@echo "... user.s"
 .PHONY : help
 
 

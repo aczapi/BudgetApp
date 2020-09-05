@@ -3,6 +3,8 @@
 
 CMakeFiles/BudgetApp.dir/main.cpp.o: ../Markup.h
 CMakeFiles/BudgetApp.dir/main.cpp.o: ../date.hpp
+CMakeFiles/BudgetApp.dir/main.cpp.o: ../dateManager.hpp
+CMakeFiles/BudgetApp.dir/main.cpp.o: ../helpMethods.hpp
 CMakeFiles/BudgetApp.dir/main.cpp.o: ../main.cpp
 CMakeFiles/BudgetApp.dir/main.cpp.o: ../user.hpp
 

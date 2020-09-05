@@ -6,6 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/aga/Desktop/BudgetApp/BudgetApp/Project/Markup.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o"
   "/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/date.cpp.o"
+  "/home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o"
+  "/home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o"
+  "/home/aga/Desktop/BudgetApp/BudgetApp/Project/user.cpp" "/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles/BudgetApp-lib.dir/user.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

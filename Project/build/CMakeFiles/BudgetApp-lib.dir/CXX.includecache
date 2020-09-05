@@ -6,19 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.cpp
-date.hpp
 /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp
 ctime
 -
 stdio.h
 /home/aga/Desktop/BudgetApp/BudgetApp/Project/stdio.h
-iostream
+date.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+dateManager.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.hpp
+helpMethods.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.hpp
+algorithm
+-
+sstream
 -
 
-/home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.hpp
 string
 -
 vector
+-
+
+/home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.hpp
+iostream
+-
+string
 -
 

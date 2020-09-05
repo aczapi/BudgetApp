@@ -83,19 +83,64 @@ CMakeFiles/BudgetApp-lib.dir/date.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BudgetApp-lib.dir/date.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.cpp -o CMakeFiles/BudgetApp-lib.dir/date.cpp.s
 
+CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o: CMakeFiles/BudgetApp-lib.dir/flags.make
+CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o: ../helpMethods.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o -c /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.cpp
+
+CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.cpp > CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.i
+
+CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.cpp -o CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.s
+
+CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o: CMakeFiles/BudgetApp-lib.dir/flags.make
+CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o: ../dateManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o -c /home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp
+
+CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp > CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.i
+
+CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp -o CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.s
+
+CMakeFiles/BudgetApp-lib.dir/user.cpp.o: CMakeFiles/BudgetApp-lib.dir/flags.make
+CMakeFiles/BudgetApp-lib.dir/user.cpp.o: ../user.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BudgetApp-lib.dir/user.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BudgetApp-lib.dir/user.cpp.o -c /home/aga/Desktop/BudgetApp/BudgetApp/Project/user.cpp
+
+CMakeFiles/BudgetApp-lib.dir/user.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BudgetApp-lib.dir/user.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/aga/Desktop/BudgetApp/BudgetApp/Project/user.cpp > CMakeFiles/BudgetApp-lib.dir/user.cpp.i
+
+CMakeFiles/BudgetApp-lib.dir/user.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BudgetApp-lib.dir/user.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/aga/Desktop/BudgetApp/BudgetApp/Project/user.cpp -o CMakeFiles/BudgetApp-lib.dir/user.cpp.s
+
 # Object files for target BudgetApp-lib
 BudgetApp__lib_OBJECTS = \
 "CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o" \
-"CMakeFiles/BudgetApp-lib.dir/date.cpp.o"
+"CMakeFiles/BudgetApp-lib.dir/date.cpp.o" \
+"CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o" \
+"CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o" \
+"CMakeFiles/BudgetApp-lib.dir/user.cpp.o"
 
 # External object files for target BudgetApp-lib
 BudgetApp__lib_EXTERNAL_OBJECTS =
 
 libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o
 libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/date.cpp.o
+libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o
+libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o
+libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/user.cpp.o
 libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/build.make
 libBudgetApp-lib.a: CMakeFiles/BudgetApp-lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libBudgetApp-lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/aga/Desktop/BudgetApp/BudgetApp/Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libBudgetApp-lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/BudgetApp-lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BudgetApp-lib.dir/link.txt --verbose=$(VERBOSE)
 

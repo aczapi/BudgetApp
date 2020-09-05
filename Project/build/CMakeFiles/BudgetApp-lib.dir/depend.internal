@@ -7,3 +7,15 @@ CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o
 CMakeFiles/BudgetApp-lib.dir/date.cpp.o
  /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.cpp
  /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.cpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/dateManager.hpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.hpp
+CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.cpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/helpMethods.hpp
+CMakeFiles/BudgetApp-lib.dir/user.cpp.o
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/date.hpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/user.cpp
+ /home/aga/Desktop/BudgetApp/BudgetApp/Project/user.hpp

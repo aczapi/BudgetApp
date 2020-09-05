@@ -1,6 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/BudgetApp-lib.dir/Markup.cpp.o"
   "CMakeFiles/BudgetApp-lib.dir/date.cpp.o"
+  "CMakeFiles/BudgetApp-lib.dir/dateManager.cpp.o"
+  "CMakeFiles/BudgetApp-lib.dir/helpMethods.cpp.o"
+  "CMakeFiles/BudgetApp-lib.dir/user.cpp.o"
   "libBudgetApp-lib.a"
   "libBudgetApp-lib.pdb"
 )
