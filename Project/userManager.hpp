@@ -6,6 +6,14 @@
 constexpr size_t MINIMUM_PASSWORD_LENGTH = 9;
 class UserManager {
 public:
+    UserManager();
+    void userRegister();
+    void userLogIn();
+    void changeLoggedInUserPassword();
+    void userLogOut();
+    bool isUserLoggedIn();
+    int getLoggedInUserId();
+    void displayAllUsers();
     class Password {
     public:
         enum class ErrorCode {
@@ -23,21 +31,22 @@ public:
         static ErrorCode checkPassword(const std::string& password, const std::string& repeatedPassword);
     };
 
-    //UserManager();
-    void
-    userRegister();
-    void userLogIn();
-    void changeLoggedInUserPassword();
-    void userLogOut();
-    bool isUserLoggedIn();
-    int getLoggedInUserId();
+    // UserManager();
+    // void userRegister();
+    // void userLogIn();
+    // void changeLoggedInUserPassword();
+    // void userLogOut();
+    // bool isUserLoggedIn();
+    // int getLoggedInUserId();
+    // void displayAllUsers();
 
 private:
-    int LoggedInUserId;
+    int loggedInUserId;
     std::vector<User> users;
     //UsersFile usersfile;
 
     User enterDataOfUser();
     int getNewUserId();
     bool doesLoginAlreadyExist(std::string loginToCheck);
+    void setAndCheckPassword(User& user);
 };

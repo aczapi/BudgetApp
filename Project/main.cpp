@@ -15,8 +15,7 @@ int main() {
     char choice;
 
     while (true) {
-        //if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false)
-        {
+        if (!budgetApplication.isUserLoggedIn()) {
             choice = HelpMethods::chooseOptionFromMainMenu();
 
             switch (choice) {
@@ -24,10 +23,41 @@ int main() {
                 budgetApplication.userRegister();
                 break;
             case '2':
-                //budgetApplication.userLogIn();
+                budgetApplication.displayallUsers();
+                budgetApplication.userLogIn();
                 break;
             case '9':
                 exit(0);
+                break;
+            default:
+                std::cout << "Not an option.\n";
+                HelpMethods::doPause();
+                break;
+            }
+        } else {
+            choice = HelpMethods::chooseOptionFromUserMenu();
+
+            switch (choice) {
+            case '1':
+                budgetApplication.addIncome();
+                break;
+            case '2':
+                budgetApplication.addExpense();
+                break;
+            case '3':
+                budgetApplication.displayBalanceOfCurrentMonth();
+                break;
+            case '4':
+                budgetApplication.displayBalanceOfPreviousMonth();
+                break;
+            case '5':
+                budgetApplication.displayBalanceOfSelectedPeriod();
+                break;
+            case '6':
+                budgetApplication.changeLoggedInUserPassword();
+                break;
+            case '7':
+                budgetApplication.userLogOut();
                 break;
             default:
                 std::cout << "Not an option.\n";

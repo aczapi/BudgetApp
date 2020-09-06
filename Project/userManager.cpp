@@ -4,6 +4,10 @@
 
 #include <algorithm>
 
+UserManager::UserManager() {
+    loggedInUserId = 0;
+}
+
 std::string UserManager::Password::getErrorMessage(const ErrorCode error) {
     switch (error) {
     case ErrorCode::Ok:
@@ -57,7 +61,7 @@ void UserManager::userRegister() {
     User user = enterDataOfUser();
     users.push_back(user);
 
-    //save to file
+    //save to file plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 
     std::cout << "Account was set up successfully\n";
     HelpMethods::doPause();
@@ -74,7 +78,7 @@ User UserManager::enterDataOfUser() {
     name = HelpMethods::getLine();
     user.setUserName(HelpMethods::changeFirstLetterToUpperCaseAndOthersToLowerCase(name));
     std::cout << "Enter surname: ";
-    name = HelpMethods::getLine();
+    surname = HelpMethods::getLine();
     user.setUserSurname(HelpMethods::changeFirstLetterToUpperCaseAndOthersToLowerCase(surname));
 
     do {
@@ -83,19 +87,20 @@ User UserManager::enterDataOfUser() {
         user.setUserLogin(login);
     } while (doesLoginAlreadyExist(user.getUserLogin()) == true);
 
-    std::string repeatedPassword = "";
-    UserManager::Password::ErrorCode result;
-    do {
-        std::cout << "Set new password: ";
-        password = HelpMethods::getLine();
-        std::cout << "Repeat password: ";
-        repeatedPassword = HelpMethods::getLine();
-        result = UserManager::Password::checkPassword(password, repeatedPassword);
-        std::cout << UserManager::Password::getErrorMessage(result) << '\n';
-        std::cin.get();
-        user.setUserPassword(password);
-    } while (result != UserManager::Password::ErrorCode::Ok);
+    // std::string repeatedPassword = "";
+    // UserManager::Password::ErrorCode result;
+    // do {
+    //     std::cout << "Set password: ";
+    //     password = HelpMethods::getLine();
+    //     std::cout << "Repeat password: ";
+    //     repeatedPassword = HelpMethods::getLine();
+    //     result = UserManager::Password::checkPassword(password, repeatedPassword);
+    //     std::cout << UserManager::Password::getErrorMessage(result) << '\n';
+    //     std::cin.get();
+    //     user.setUserPassword(password);
+    // } while (result != UserManager::Password::ErrorCode::Ok);
 
+    setAndCheckPassword(user);
     return user;
 }
 
@@ -114,4 +119,105 @@ bool UserManager::doesLoginAlreadyExist(std::string loginToCheck) {
         }
     }
     return false;
+}
+
+void UserManager::displayAllUsers() {
+    system("clear");
+    for (int i = 0; i < users.size(); i++) {
+        std::cout << users[i].getUserId() << "\n";
+        std::cout << users[i].getUserName() << "\n";
+        std::cout << users[i].getUserSurname() << "\n";
+        std::cout << users[i].getUserLogin() << "\n";
+        std::cout << users[i].getUserPassword() << "\n\n";
+    }
+    HelpMethods::doPause();
+}
+
+void UserManager::userLogIn() {
+    User user;
+
+    std::string login = "";
+    std::cout << "\nEnter login: ";
+    login = HelpMethods::getLine();
+
+    std::string password = "";
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getUserLogin() == login) {
+            for (int tries = 3; tries > 0; tries--) {
+                std::cout << "Enter password. You have " << tries << " tries: ";
+                password = HelpMethods::getLine();
+                if (users[i].getUserPassword() == password) {
+                    std::cout << "\nYou are logged in.\n";
+                    HelpMethods::doPause();
+                    loggedInUserId = users[i].getUserId();
+                    return;
+                }
+            }
+            std::cout << "You have entered password incorrectly 3 times.\n";
+            HelpMethods::doPause();
+            return;
+        }
+    }
+    std::cout << "There is no user that match entered login.\n";
+    HelpMethods::doPause();
+}
+
+void UserManager::setAndCheckPassword(User& user) {
+    // User user;
+    std::string password;
+    std::string repeatedPassword = "";
+    UserManager::Password::ErrorCode result;
+
+    do {
+        std::cout << "Set new password: ";
+        password = HelpMethods::getLine();
+        std::cout << "Repeat password: ";
+        repeatedPassword = HelpMethods::getLine();
+        result = UserManager::Password::checkPassword(password, repeatedPassword);
+        std::cout << UserManager::Password::getErrorMessage(result) << '\n';
+        std::cin.get();
+        user.setUserPassword(password);
+    } while (result != UserManager::Password::ErrorCode::Ok);
+}
+void UserManager::changeLoggedInUserPassword() {
+    User user;
+
+    // std::string password;
+    // std::string repeatedPassword = "";
+    // UserManager::Password::ErrorCode result;
+
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getUserId() == loggedInUserId) {
+            setAndCheckPassword(user);
+            // do {
+            //     std::cout << "Set new password: ";
+            //     password = HelpMethods::getLine();
+            //     std::cout << "Repeat password: ";
+            //     repeatedPassword = HelpMethods::getLine();
+            //     result = UserManager::Password::checkPassword(password, repeatedPassword);
+            //     std::cout << UserManager::Password::getErrorMessage(result) << '\n';
+            //     std::cin.get();
+            //     user.setUserPassword(password);
+            // } while (result != UserManager::Password::ErrorCode::Ok);
+            std::cout << "Password has been changed.\n";
+            HelpMethods::doPause();
+        }
+    }
+    //plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
+void UserManager::userLogOut() {
+    loggedInUserId = 0;
+}
+
+bool UserManager::isUserLoggedIn() {
+    if (loggedInUserId > 0)
+        return true;
+    else
+        return false;
+}
+
+int UserManager::getLoggedInUserId() {
+    return loggedInUserId;
 }
