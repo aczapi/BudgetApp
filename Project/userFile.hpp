@@ -7,7 +7,7 @@
 
 class UserFile {
 public:
-    UserFile(std::string fileName);
+    UserFile(std::string UserfileName);
     void saveUserToFile(User user);
     std::vector<User> loadAllUsersFromFile();
     void changeUserPasswordAtFile(int loggedInUserId, std::string newPassword);
@@ -16,6 +16,6 @@ public:
     // bool isFileEmpty();
 
 private:
-    const std::string FILE_NAME_;
+    const std::string USER_FILE_NAME_;
     CMarkup xml;
 };
