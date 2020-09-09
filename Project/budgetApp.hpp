@@ -3,7 +3,7 @@
 
 class BudgetApplication {
 public:
-    BudgetApplication();
+    BudgetApplication(std ::string userFileName);
     void userRegister();
     void userLogIn();
     void displayallUsers();

@@ -1,6 +1,7 @@
 #include "budgetApp.hpp"
 
-BudgetApplication::BudgetApplication() {}
+BudgetApplication::BudgetApplication(std::string userFileName)
+    : userManager(userFileName) {}
 
 void BudgetApplication::userRegister() {
     userManager.userRegister();
