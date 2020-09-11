@@ -1,8 +1,8 @@
 #include "userFile.hpp"
 #include "helpMethods.hpp"
 
-UserFile::UserFile(std::string UserfileName)
-    : USER_FILE_NAME_(UserfileName) {}
+UserFile::UserFile(std::string userFileName)
+    : USER_FILE_NAME_(userFileName) {}
 
 void UserFile::saveUserToFile(User user) {
     bool fileExists = xml.Load(USER_FILE_NAME_.c_str());

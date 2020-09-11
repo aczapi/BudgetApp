@@ -13,13 +13,14 @@ void BudgetApplication::userLogIn() {
     //     adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
     // }
 }
-
+//delete later
 void BudgetApplication::displayallUsers() {
     userManager.displayAllUsers();
 }
 
 void BudgetApplication::changeLoggedInUserPassword() {
-    userManager.changeLoggedInUserPassword();
+    if (userManager.isUserLoggedIn())
+        userManager.changeLoggedInUserPassword();
 }
 
 void BudgetApplication::userLogOut() {
