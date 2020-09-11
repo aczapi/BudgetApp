@@ -82,3 +82,11 @@ std::string HelpMethods::changeFirstLetterToUpperCaseAndOthersToLowerCase(std::s
     }
     return input;
 }
+
+float HelpMethods::convertStringToFloat(std::string stringToConvert) {
+    float number;
+    std::istringstream iss(stringToConvert);
+    iss >> number;
+
+    return number;
+}
