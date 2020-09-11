@@ -1,7 +1,8 @@
 cmake_minimum_required (VERSION 3.10)
 project(BudgetApp)
 
-set(SOURCE_FILES Markup.cpp date.cpp helpMethods.cpp dateManager.cpp user.cpp userManager.cpp budgetApp.cpp budgetManager.cpp userFile.cpp)
+set(SOURCE_FILES Markup.cpp date.cpp helpMethods.cpp dateManager.cpp user.cpp userManager.cpp 
+budgetApp.cpp budgetManager.cpp userFile.cpp income.cpp incomeFile.cpp expense.cpp expenseFile.cpp incomeManager.cpp)
 
 add_library(${PROJECT_NAME}-lib STATIC ${SOURCE_FILES})
 
