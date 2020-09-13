@@ -2,7 +2,10 @@
 
 #include <string>
 #include <vector>
+#include "date.hpp"
 
+static const int MIN_YEAR = 2000;
+static const int MAX_YEAR = 2100;
 class DateManager {
 public:
     DateManager();
@@ -11,6 +14,7 @@ public:
     enum class WrongDate {
         Ok,
         WrongFormat,
+        IncorrectDate,
         NotALeapYear,
         BeforeLastDayOfCurrentMonth
     };
@@ -24,6 +28,8 @@ public:
     bool isLeapYear();
     bool isDateCorrect();
     bool isBeforeLastDayOfCurrentMonth(const Date& date, const Date& today);
+    std::string convertDateToString(const Date& date);
+    std::string getDateInCorrectFormat();
 
 private:
     Date date_;

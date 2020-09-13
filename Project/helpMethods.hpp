@@ -6,6 +6,7 @@ class HelpMethods {
 public:
     static int convertStringToInt(std::string stringToConvert);
     static float convertStringToFloat(std::string stringToConvert);
+    static std::string convertIntToString(int numberToConvert);
     static char getChar();
     static void doPause();
     static char chooseOptionFromMainMenu();

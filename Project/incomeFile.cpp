@@ -2,7 +2,9 @@
 #include "helpMethods.hpp"
 
 IncomeFile::IncomeFile(std::string incomeFileName)
-    : INCOME_FILE_NAME_(incomeFileName) {}
+    : INCOME_FILE_NAME_(incomeFileName) {
+    numberOfIncomes = 0;
+}
 
 void IncomeFile::saveIncomeToFile(Income income) {
     bool fileExists = xml.Load(INCOME_FILE_NAME_.c_str());
@@ -23,9 +25,10 @@ void IncomeFile::saveIncomeToFile(Income income) {
     xml.Save(INCOME_FILE_NAME_.c_str());
 }
 
-std::vector<Income> IncomeFile::loadIncomesFromFile() {
+std::vector<Income> IncomeFile::loadIncomesFromFile(int loggedInUserId) {
     std::vector<Income> incomes;
     Income income;
+    numberOfIncomes = 0;
     // bool fileExists = xml.Load(USER_FILE_NAME_.c_str());
 
     //     if (!fileExists) {
@@ -35,23 +38,36 @@ std::vector<Income> IncomeFile::loadIncomesFromFile() {
 
     xml.Load(INCOME_FILE_NAME_.c_str());
 
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
+    // xml.ResetPos();
+    // xml.FindElem();
+    // xml.IntoElem();
     while (xml.FindElem("INCOME")) {
         xml.IntoElem();
-        xml.FindElem("INCOMEID");
-        income.setIncomeId(HelpMethods::convertStringToInt(xml.GetData()));
+
         xml.FindElem("USERID");
-        income.setUserId(HelpMethods::convertStringToInt(xml.GetData()));
-        xml.FindElem("DATE");
-        income.setDate(xml.GetData());
-        xml.FindElem("ITEM");
-        income.setItem(xml.GetData());
-        xml.FindElem("AMOUNT");
-        income.setAmount(HelpMethods::convertStringToFloat(xml.GetData()));
+        if (HelpMethods::convertStringToInt(xml.GetData()) == loggedInUserId) {
+            income.setUserId(HelpMethods::convertStringToInt(xml.GetData()));
+            xml.ResetMainPos();
+            xml.FindElem("INCOMEID");
+            income.setIncomeId(HelpMethods::convertStringToInt(xml.GetData()));
+            xml.FindElem("DATE");
+            income.setDate(xml.GetData());
+            xml.FindElem("ITEM");
+            income.setItem(xml.GetData());
+            xml.FindElem("AMOUNT");
+            income.setAmount(HelpMethods::convertStringToFloat(xml.GetData()));
+
+            incomes.push_back(income);
+        }
+        numberOfIncomes++;
         xml.OutOfElem();
-        incomes.push_back(income);
     }
+    numberOfIncomes++;
     return incomes;
+}
+
+int IncomeFile::getIdOfLastIncome() {
+    xml.Load(INCOME_FILE_NAME_.c_str());
+    if (xml.FindElem("INCOME"))
+        return numberOfIncomes;
 }

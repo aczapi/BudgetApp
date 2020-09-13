@@ -2,7 +2,6 @@
 
 #include "stdio.h"
 
-#include "date.hpp"
 #include "dateManager.hpp"
 #include "helpMethods.hpp"
 
@@ -26,39 +25,25 @@ Date DateManager::getTodayDate() {
 int DateManager::getYear(std::string enteredDate) {
     std::string year = "";
     int i = 0;
-    const int numbersInYear = 4;
+
     while (enteredDate[i] != '-') {
         year += enteredDate[i];
         ++i;
     }
-    if (year.length() == numbersInYear) {
-        return date_.year_ = HelpMethods::convertStringToInt(year);
-
-    } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
-    exit(0);
+    return date_.year_ = HelpMethods::convertStringToInt(year);
 }
 
 int DateManager::getMonth(std::string enteredDate) {
     std::string month = "";
-    int positionOfDash = 7;
+
     month = enteredDate.substr(5, 2);
-    if (enteredDate[positionOfDash] == '-') {
-        return date_.month_ = HelpMethods::convertStringToInt(month);
-    } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
-    exit(0);
+    return date_.month_ = HelpMethods::convertStringToInt(month);
 }
 int DateManager::getDay(std::string enteredDate) {
     std::string day = "";
-    const int numbersInDays = 2;
-    day = enteredDate.substr(8, 2);
-    if (day.length() == numbersInDays) {
-        return date_.day_ = HelpMethods::convertStringToInt(day);
 
-    } else
-        std::cout << getWrongDateErrorMessage(WrongDate::WrongFormat) << "\n";
-    exit(0);
+    day = enteredDate.substr(8, 2);
+    return date_.day_ = HelpMethods::convertStringToInt(day);
 }
 
 bool DateManager::isLeapYear() {
@@ -69,10 +54,7 @@ bool DateManager::isLeapYear() {
 }
 
 bool DateManager::isDateCorrect() {
-    static const int minYear = 2000;
-    static const int maxYear = 2100;
-
-    if (date_.year_ < minYear || date_.year_ > maxYear)
+    if (date_.year_ < MIN_YEAR)
         return false;
 
     if (date_.day_ <= 0)
@@ -116,9 +98,11 @@ bool DateManager::isBeforeLastDayOfCurrentMonth(const Date& date, const Date& to
 std::string DateManager::getWrongDateErrorMessage(WrongDate error) {
     switch (error) {
     case WrongDate::Ok:
-        return "OK";
+        return "Date is correct";
     case WrongDate::WrongFormat:
         return "Date should be in format yyyy-mm-dd";
+    case WrongDate::IncorrectDate:
+        return "Date is incorrect";
     case WrongDate::NotALeapYear:
         return "It is not a leap year";
     case WrongDate::BeforeLastDayOfCurrentMonth:
@@ -139,10 +123,52 @@ DateManager::WrongDate DateManager::checkDate(std::string dateToCheck) {
         return WrongDate::NotALeapYear;
     }
     if (!isDateCorrect()) {
-        return WrongDate::WrongFormat;
+        return WrongDate::IncorrectDate;
     }
     if (!isBeforeLastDayOfCurrentMonth(date_, today_)) {
         return WrongDate::BeforeLastDayOfCurrentMonth;
     }
     return WrongDate::Ok;
+}
+
+std::string DateManager::convertDateToString(const Date& date) {
+    auto yearString = HelpMethods::convertIntToString(date.year_);
+    auto monthString = HelpMethods::convertIntToString(date.month_);
+    auto dayString = HelpMethods::convertIntToString(date.day_);
+
+    if (monthString.length() == 1) {
+        monthString = '0' + monthString;
+    }
+    if (dayString.length() == 1) {
+        dayString = '0' + dayString;
+    }
+
+    auto dateString = yearString + '-' + monthString + '-' + dayString;
+    return dateString;
+}
+
+std::string DateManager::getDateInCorrectFormat() {
+    std::string enteredDate = "";
+    DateManager::WrongDate result;
+
+    do {
+        std::cout << "\nEnter date in format yyyy-mm-dd: \n";
+        enteredDate = HelpMethods::getLine();
+        int positionOfFirstDash = 4;
+        int positionOfSecondDash = 7;
+        int numberOfSignsInCorrectDateFormat = 10;
+        char dash = '-';
+
+        if (enteredDate.length() != numberOfSignsInCorrectDateFormat ||
+            enteredDate[positionOfFirstDash] != dash ||
+            enteredDate[positionOfSecondDash] != dash) {
+            result = DateManager::WrongDate::WrongFormat;
+            std::cout << DateManager::getWrongDateErrorMessage(result) << '\n';
+        } else {
+            result = DateManager::checkDate(enteredDate);
+            std::cout << DateManager::getWrongDateErrorMessage(result) << '\n';
+        }
+    } while (result != DateManager::WrongDate::Ok);
+
+    return enteredDate;
 }

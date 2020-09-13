@@ -10,6 +10,13 @@ int HelpMethods::convertStringToInt(std::string stringToConvert) {
 
     return number;
 }
+
+std::string HelpMethods::convertIntToString(int numberToConvert) {
+    std::ostringstream ss;
+    ss << numberToConvert;
+    std::string str = ss.str();
+    return str;
+}
 char HelpMethods::getChar() {
     std::string input = "";
     char sign = {0};

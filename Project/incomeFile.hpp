@@ -8,9 +8,11 @@ class IncomeFile {
 public:
     IncomeFile(std::string IncomeFileName);
     void saveIncomeToFile(Income income);
-    std::vector<Income> loadIncomesFromFile();
+    std::vector<Income> loadIncomesFromFile(int loggedInUserId);
+    int getIdOfLastIncome();
 
 private:
     const std::string INCOME_FILE_NAME_;
+    int numberOfIncomes;
     CMarkup xml;
 };
