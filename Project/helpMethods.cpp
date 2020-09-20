@@ -58,6 +58,7 @@ char HelpMethods::chooseOptionFromMainMenu() {
 char HelpMethods::chooseOptionFromUserMenu() {
     char choice;
 
+    std::cin.ignore();
     system("clear");
     std::cout << " >>> USER MENU <<<\n";
     std::cout << "---------------------------\n";
@@ -96,4 +97,29 @@ float HelpMethods::convertStringToFloat(std::string stringToConvert) {
     iss >> number;
 
     return number;
+}
+
+std::string HelpMethods::convertFloatToString(float numberToConvert) {
+    std::ostringstream ss;
+    ss << numberToConvert;
+    std::string str = ss.str();
+    return str;
+}
+
+float HelpMethods::getAmount() {
+    float amount = 0.0;
+    std::string input;
+    while (true) {
+        getline(std::cin, input);
+        for (int i = 0; i < input.length(); ++i) {
+            if (input[i] == ',') {
+                input[i] = '.';
+            }
+        }
+        std::stringstream myStream(input);
+        if (myStream >> amount && amount >= 0.0)
+            break;
+        std::cout << "It is not an amount. Try again\n";
+    }
+    return amount;
 }

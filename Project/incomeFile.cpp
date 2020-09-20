@@ -21,14 +21,14 @@ void IncomeFile::saveIncomeToFile(Income income) {
     xml.AddElem("USERID", income.getUserId());
     xml.AddElem("DATE", income.getDate());
     xml.AddElem("ITEM", income.getItem());
-    xml.AddElem("AMOUNT", income.getAmount());
+    xml.AddElem("AMOUNT", HelpMethods::convertFloatToString(income.getAmount()));
     xml.Save(INCOME_FILE_NAME_.c_str());
 }
 
 std::vector<Income> IncomeFile::loadIncomesFromFile(int loggedInUserId) {
     std::vector<Income> incomes;
     Income income;
-    numberOfIncomes = 0;
+    //numberOfIncomes = 0;
     // bool fileExists = xml.Load(USER_FILE_NAME_.c_str());
 
     //     if (!fileExists) {
@@ -38,9 +38,9 @@ std::vector<Income> IncomeFile::loadIncomesFromFile(int loggedInUserId) {
 
     xml.Load(INCOME_FILE_NAME_.c_str());
 
-    // xml.ResetPos();
-    // xml.FindElem();
-    // xml.IntoElem();
+    xml.ResetPos();
+    xml.FindElem();
+    xml.IntoElem();
     while (xml.FindElem("INCOME")) {
         xml.IntoElem();
 
@@ -59,15 +59,28 @@ std::vector<Income> IncomeFile::loadIncomesFromFile(int loggedInUserId) {
 
             incomes.push_back(income);
         }
-        numberOfIncomes++;
+
         xml.OutOfElem();
     }
-    numberOfIncomes++;
+
     return incomes;
 }
 
 int IncomeFile::getIdOfLastIncome() {
-    xml.Load(INCOME_FILE_NAME_.c_str());
-    if (xml.FindElem("INCOME"))
+    int numberOfIncomes = 0;
+
+    bool fileExists = xml.Load(INCOME_FILE_NAME_.c_str());
+
+    if (!fileExists) {
         return numberOfIncomes;
+    }
+
+    xml.FindElem();
+    xml.IntoElem();
+
+    while (xml.FindElem("INCOME")) {
+        numberOfIncomes++;
+    }
+
+    return numberOfIncomes;
 }

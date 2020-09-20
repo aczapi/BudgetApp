@@ -1,11 +1,11 @@
 #include "expense.hpp"
 
 void Expense::setUserId(int userId) {
-    if (userId >= 0)
+    if (userId > 0)
         userId_ = userId;
 }
 void Expense::setExpenseId(int expenseId) {
-    if (expenseId >= 0)
+    if (expenseId > 0)
         expenseId_ = expenseId;
 }
 void Expense::setDate(std::string date) {

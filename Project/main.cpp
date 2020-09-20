@@ -1,18 +1,16 @@
-#include <chrono>
 #include <iostream>
-#include <vector>
+#include "helpMethods.hpp"  //refactor later
+
 #include "budgetApp.hpp"
-#include "date.hpp"
-#include "dateManager.hpp"
-#include "helpMethods.hpp"
-#include "user.hpp"
-#include "userManager.hpp"
 
 #include "Markup.h"
 
 int main() {
-    BudgetApplication budgetApplication("Users.xml");
+    BudgetApplication budgetApplication("Users.xml", "Incomes.xml", "Expenses.xml");
     char choice;
+    IncomeManager incomeManager("Income.xml", 1);
+    Income income;
+    IncomeFile IncomeFile("Incomes.xml");
 
     while (true) {
         if (!budgetApplication.isUserLoggedIn()) {
@@ -40,6 +38,7 @@ int main() {
             switch (choice) {
             case '1':
                 budgetApplication.addIncome();
+
                 break;
             case '2':
                 budgetApplication.addExpense();
@@ -66,80 +65,6 @@ int main() {
             }
         }
     }
-
-   
-    // //to get data //
-    // std::string strFindName = "Aga";
-    // xml.ResetPos();
-    // xml.FindElem();
-    // xml.IntoElem();
-    // while (xml.FindElem("User")) {
-    //     xml.FindChildElem("Login");
-    //     if (xml.GetChildData() == strFindName)
-    //         std::cout << strFindName << "\n";
-    //     strFindName = xml.GetDoc();
-
-    //     //break;  // found
-    // }
-
-    // //INCOMES
-    // CMarkup xml;
-    // bool fileExists = xml.Load("incomes.xml");
-
-    // if (!fileExists) {
-    //     xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    //     xml.AddElem("Incomes");
-    // }
-
-    // xml.FindElem();
-    // xml.IntoElem();
-    // xml.AddElem("IncomeId");
-    // xml.IntoElem();
-    // xml.AddElem("UserId", "3");
-    // xml.AddElem("Date", "2020-08-26");
-    // xml.AddElem("Item", "salary");
-    // xml.AddElem("Amount", "4000");
-    // xml.Save("incomes.xml");
-
-    // //EXPENCES
-    // CMarkup xml;
-    // bool fileExists = xml.Load("expenses.xml");
-
-    // if (!fileExists) {
-    //     xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    //     xml.AddElem("Expenses");
-    // }
-
-    // xml.FindElem();
-    // xml.IntoElem();
-    // xml.AddElem("ExpenseId");
-    // xml.IntoElem();
-    // xml.AddElem("UserId", "3");
-    // xml.AddElem("Date", "2020-01-01");
-    // xml.AddElem("Item", "food");
-    // xml.AddElem("Amount", "80");
-    // xml.Save("expenses.xml");
-
-    //Date date(2000, 1, 1);
-    // auto today = date.Today(date);
-
-    // std::cout << "\n";
-    // std::string enteredDate = "";
-
-    // std::cout << "Enter date in format yyyy-mm-dd: \n";
-    // std::cin >> enteredDate;
-    // date.setYear(enteredDate);
-    // date.setMonth(enteredDate);
-    // date.setDay(enteredDate);
-
-    // std::cout << "Today is: ";
-    // today.showDate();
-
-    // auto result = date.checkDates(date, today);
-    // std::cout << date.getWrongDateErrorMessage(result) << '\n';
-    // date.showDate();
-
-    // std::cout << "\n";
 
     // std::vector<Date> vectorOfDates{};
     // Date date1(2019, 12, 11);
@@ -188,22 +113,11 @@ int main() {
     //         vectorOfDates[i].showDate();
     // }
 
-    //Date date;
-    //DateManager date;
-    //auto today = date.getTodayDate();
+    // IncomeManager incomeManager("Income.xml", 1);
+    // Income income;
+    // IncomeFile IncomeFile("Incomes.xml");
 
-    // DateManager dateToSet;
-    // std::cout << "\n";
-    // std::string enteredDate = "";
-
-    // std::cout << "Enter date in format yyyy-mm-dd: \n";
-    // std::cin >> enteredDate;
-    // // dateToSet.getYear(enteredDate);
-    // // dateToSet.getMonth(enteredDate);
-    // // dateToSet.getDay(enteredDate);
-
-    // auto result = dateToSet.checkDate(enteredDate);
-    // std::cout << dateToSet.getWrongDateErrorMessage(result) << '\n';
+    // incomeManager.addIncome();
 
     return 0;
 }

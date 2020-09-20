@@ -17,6 +17,8 @@ public:
     void displayBalanceOfCurrentMonth();
     void displayBalanceOfPreviousMonth();
     void displayBalanceOfSelectedPeriod();
+    void loadLoggedInUserIncomes();
+    void displayAllIncomes();
 
 private:
     std::vector<Income> incomes;

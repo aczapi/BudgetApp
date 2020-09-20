@@ -7,7 +7,7 @@
 
 class UserFile {
 public:
-    UserFile(std::string UserFileName);
+    UserFile(std::string userFileName);
     void saveUserToFile(User user);
     std::vector<User> loadAllUsersFromFile();
     void changeUserPasswordAtFile(int loggedInUserId, std::string newPassword);
