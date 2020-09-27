@@ -14,11 +14,18 @@ public:
 
     void addExpense();
 
-    void displayBalanceOfCurrentMonth();
-    void displayBalanceOfPreviousMonth();
-    void displayBalanceOfSelectedPeriod();
+    void displayExpensesOfCurrentMonth();
+    void displayExpensesOfPreviousMonth();
+    void displayExpensesOfSelectedPeriod(std::string startDate, std::string endDate);
     void loadLoggedInUserExpenses();
-    void displayAllExpenses();  //delete later
+    std::vector<Expense> sort(std::vector<Expense> expenses);
+    void displayExpense(Expense& expense);
+
+    std::vector<Expense> getExpensesFromCurrentMonth();
+    std::vector<Expense> getExpensesFromPreviousMonth();
+    std::vector<Expense> getExpensesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Expense>& expensesFromSelectedPeriod);
+
+    float getSumOfExpenses();
 
 private:
     std::vector<Expense> expenses;
@@ -26,4 +33,5 @@ private:
 
     Expense enterExpenseWithDate(std::string expenseDate);
     int getIdOfLastExpense();
+    float sumOfExpenses;
 };

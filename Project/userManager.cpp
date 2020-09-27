@@ -111,18 +111,6 @@ bool UserManager::doesLoginAlreadyExist(std::string loginToCheck) {
     return false;
 }
 
-void UserManager::displayAllUsers() {
-    system("clear");
-    for (int i = 0; i < users.size(); i++) {
-        std::cout << users[i].getUserId() << "\n";
-        std::cout << users[i].getUserName() << "\n";
-        std::cout << users[i].getUserSurname() << "\n";
-        std::cout << users[i].getUserLogin() << "\n";
-        std::cout << users[i].getUserPassword() << "\n\n";
-    }
-    HelpMethods::doPause();
-}
-
 void UserManager::userLogIn() {
     User user;
 

@@ -18,3 +18,6 @@ void Expense::setAmount(float amount) {
     if (amount > 0)
         amount_ = amount;
 }
+void Expense::setDateAsInt(int dateAsInt) {
+    dateAsInt_ = dateAsInt;
+}

@@ -1,4 +1,5 @@
 #include "income.hpp"
+#include <algorithm>
 
 void Income::setUserId(int userId) {
     if (userId > 0)
@@ -17,4 +18,8 @@ void Income::setItem(std::string item) {
 void Income::setAmount(float amount) {
     if (amount > 0)
         amount_ = amount;
+}
+
+void Income::setDateAsInt(int dateAsInt) {
+    dateAsInt_ = dateAsInt;
 }

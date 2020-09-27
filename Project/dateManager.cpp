@@ -147,6 +147,29 @@ std::string DateManager::convertDateToString(const Date& date) {
     return dateString;
 }
 
+int DateManager::convertDateToLongInt(std::string date) {
+    auto yearString = date.substr(0, 4);
+    auto monthString = date.substr(5, 2);
+    auto dayString = date.substr(8, 2);
+
+    auto dateString = yearString + monthString + dayString;
+    auto dateAsInt = HelpMethods::convertStringToInt(dateString);
+
+    return dateAsInt;
+}
+
+bool DateManager::checkIfStartDateIsBeforeEndDate(std::string startDate, std::string endDate) {
+    auto startDateAsInt = convertDateToLongInt(startDate);
+    auto endDateAsInt = convertDateToLongInt(endDate);
+
+    if (startDateAsInt > endDateAsInt) {
+        std::cout << "Start date cannot be later than end date! Try again\n";
+        HelpMethods::doPause();
+        return false;
+    }
+    return true;
+}
+
 std::string DateManager::getDateInCorrectFormat() {
     std::string enteredDate = "";
     DateManager::WrongDate result;
@@ -171,4 +194,30 @@ std::string DateManager::getDateInCorrectFormat() {
     } while (result != DateManager::WrongDate::Ok);
 
     return enteredDate;
+}
+
+bool DateManager::isDateFromCurrentMonth(std::string enteredDate) {
+    return getYear(enteredDate) == today_.year_ && getMonth(enteredDate) == today_.month_;
+}
+bool DateManager::isDateFromPreviousMonth(std::string enteredDate) {
+    int previousMonth;
+    int previousYear;
+
+    if (today_.month_ == 1) {
+        previousMonth = 12;
+        previousYear = today_.year_ - 1;
+
+        return getYear(enteredDate) == previousYear && getMonth(enteredDate) == previousMonth;
+
+    } else {
+        previousMonth = today_.month_ - 1;
+        return getYear(enteredDate) == today_.year_ && getMonth(enteredDate) == previousMonth;
+    }
+}
+bool DateManager::isDateFromSelectedPeriod(std::string startDate, std::string endDate, std::string enteredDate) {
+    auto startDateAsInt = convertDateToLongInt(startDate);
+    auto endDateAsInt = convertDateToLongInt(endDate);
+    auto enteredDateAsInt = convertDateToLongInt(enteredDate);
+
+    return startDateAsInt <= enteredDateAsInt && enteredDateAsInt <= endDateAsInt;
 }

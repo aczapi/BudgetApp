@@ -29,7 +29,13 @@ public:
     bool isDateCorrect();
     bool isBeforeLastDayOfCurrentMonth(const Date& date, const Date& today);
     std::string convertDateToString(const Date& date);
+    int convertDateToLongInt(std::string date);
     std::string getDateInCorrectFormat();
+
+    bool isDateFromCurrentMonth(std::string enteredDate);
+    bool isDateFromPreviousMonth(std::string enteredDate);
+    bool isDateFromSelectedPeriod(std::string startDate, std::string endDate, std::string enteredDate);
+    bool checkIfStartDateIsBeforeEndDate(std::string startDate, std::string endDate);
 
 private:
     Date date_;

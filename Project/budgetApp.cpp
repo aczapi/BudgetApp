@@ -13,10 +13,6 @@ void BudgetApplication::userLogIn() {
         budgetManager = std::make_shared<BudgetManager>(incomesFileName, expensesFileName, userManager.getLoggedInUserId());
     }
 }
-//delete later
-void BudgetApplication::displayallUsers() {
-    userManager.displayAllUsers();
-}
 
 void BudgetApplication::changeLoggedInUserPassword() {
     if (userManager.isUserLoggedIn())
@@ -47,6 +43,27 @@ void BudgetApplication::addExpense() {
         std::cin.get();
     }
 }
-void BudgetApplication::displayBalanceOfCurrentMonth() {}
-void BudgetApplication::displayBalanceOfPreviousMonth() {}
-void BudgetApplication::displayBalanceOfSelectedPeriod() {}
+void BudgetApplication::displayBalanceOfCurrentMonth() {
+    if (userManager.isUserLoggedIn()) {
+        budgetManager->displayBalanceOfCurrentMonth();
+    } else {
+        std::cout << "You are not logged in.\n";
+        std::cin.get();
+    }
+}
+void BudgetApplication::displayBalanceOfPreviousMonth() {
+    if (userManager.isUserLoggedIn()) {
+        budgetManager->displayBalanceOfPreviousMonth();
+    } else {
+        std::cout << "You are not logged in.\n";
+        std::cin.get();
+    }
+}
+void BudgetApplication::displayBalanceOfSelectedPeriod() {
+    if (userManager.isUserLoggedIn()) {
+        budgetManager->displayBalanceOfSelectedPeriod();
+    } else {
+        std::cout << "You are not logged in.\n";
+        std::cin.get();
+    }
+}

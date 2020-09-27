@@ -14,15 +14,22 @@ public:
 
     void addIncome();
 
-    void displayBalanceOfCurrentMonth();
-    void displayBalanceOfPreviousMonth();
-    void displayBalanceOfSelectedPeriod();
+    void displayIncomesOfCurrentMonth();
+    void displayIncomesOfPreviousMonth();
+    void displayIncomesOfSelectedPeriod(std::string startDate, std::string endDate);
     void loadLoggedInUserIncomes();
-    void displayAllIncomes();
+    void displayIncome(Income& income);
+
+    std::vector<Income> sort(std::vector<Income> incomes);
+    std::vector<Income> getIncomesFromCurrentMonth();
+    std::vector<Income> getIncomesFromPreviousMonth(std::vector<Income>& incomesFromPreviousMonth);
+    std::vector<Income> getIncomesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Income>& incomesFromSelectedPeriod);
+    float getSumOfIncomes();
 
 private:
     std::vector<Income> incomes;
     int loggedInUserId;
+    float sumOfIncomes;
 
     Income enterIncomeWithDate(std::string incomeDate);
     int getIdOfLastIncome();
