@@ -1,10 +1,6 @@
 #include "expenseManager.hpp"
-
 #include <algorithm>
 #include <cmath>
-#include <iostream>
-#include <string>
-#include "expenseManager.hpp"
 #include "helpMethods.hpp"
 
 ExpenseManager::ExpenseManager(std::string NAME_OF_EXPENSE_FILE_, int LOGGED_IN_USER_ID_)
@@ -57,7 +53,7 @@ void ExpenseManager::loadLoggedInUserExpenses() {
     expenses = expenseFile.loadExpensesFromFile(loggedInUserId);
 }
 
-std::vector<Expense> ExpenseManager::sort(std::vector<Expense> expenses) {
+std::vector<Expense> ExpenseManager::sort(std::vector<Expense>& expenses) {
     std::sort(expenses.begin(), expenses.end());
     return expenses;
 }
@@ -77,7 +73,7 @@ bool operator<(Expense& firstExpense, Expense& secondExpense) {
     return firstExpense.getDateAsInt() < secondExpense.getDateAsInt();
 }
 
-Expense ExpenseManager::addSelectedExpenses(std::vector<Expense>::iterator itr) {
+Expense ExpenseManager::addSelectedExpenses(std::vector<Expense>::iterator& itr) {
     expense.setExpenseId(itr->getExpenseId());
     expense.setUserId(itr->getUserId());
     expense.setDate(itr->getDate());
@@ -155,7 +151,7 @@ std::vector<Expense> ExpenseManager::getExpensesFromPreviousMonth(std::vector<Ex
     return expensesFromPreviousMonth;
 }
 
-void ExpenseManager::displayExpensesOfSelectedPeriod(std::string startDate, std::string endDate) {
+void ExpenseManager::displayExpensesOfSelectedPeriod(std::string& startDate, std::string& endDate) {
     sumOfExpenses = 0.0;
     std::vector<Expense> expensesFromSelectedPeriod;
     expensesFromSelectedPeriod = getExpensesFromSelectedPeriod(startDate, endDate, expensesFromSelectedPeriod);
@@ -178,7 +174,7 @@ void ExpenseManager::displayExpensesOfSelectedPeriod(std::string startDate, std:
         std::cout << "There are no expenses in given time period.\n\n";
 }
 
-std::vector<Expense> ExpenseManager::getExpensesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Expense>& expensesFromSelectedPeriod) {
+std::vector<Expense> ExpenseManager::getExpensesFromSelectedPeriod(std::string& startDate, std::string& endDate, std::vector<Expense>& expensesFromSelectedPeriod) {
     std::vector<Expense>::iterator itr = expenses.begin();
     while (itr != expenses.end()) {
         if (dateManager.isDateFromSelectedPeriod(startDate, endDate, itr->getDate())) {

@@ -1,8 +1,6 @@
 #include "incomeManager.hpp"
 #include <algorithm>
-#include <iostream>
-#include <string>
-#include "cmath"
+#include <cmath>
 #include "helpMethods.hpp"
 
 IncomeManager::IncomeManager(std::string NAME_OF_INCOME_FILE_, int LOGGED_IN_USER_ID_)
@@ -56,7 +54,7 @@ void IncomeManager::loadLoggedInUserIncomes() {
     incomes = incomeFile.loadIncomesFromFile(loggedInUserId);
 }
 
-std::vector<Income> IncomeManager::sort(std::vector<Income> incomes) {
+std::vector<Income> IncomeManager::sort(std::vector<Income>& incomes) {
     std::sort(incomes.begin(), incomes.end());
     return incomes;
 }
@@ -100,7 +98,7 @@ void IncomeManager::displayIncomesOfCurrentMonth() {
         std::cout << "There are no incomes in current month.\n";
 }
 
-Income IncomeManager::addSelectedIncomes(std::vector<Income>::iterator itr) {
+Income IncomeManager::addSelectedIncomes(std::vector<Income>::iterator& itr) {
     income.setIncomeId(itr->getIncomeId());
     income.setUserId(itr->getUserId());
     income.setDate(itr->getDate());
@@ -156,7 +154,7 @@ std::vector<Income> IncomeManager::getIncomesFromPreviousMonth(std::vector<Incom
     return incomesFromPreviousMonth;
 }
 
-void IncomeManager::displayIncomesOfSelectedPeriod(std::string startDate, std::string endDate) {
+void IncomeManager::displayIncomesOfSelectedPeriod(std::string& startDate, std::string& endDate) {
     sumOfIncomes = 0.0;
     std::vector<Income> incomesFromSelectedPeriod{};
     incomesFromSelectedPeriod = getIncomesFromSelectedPeriod(startDate, endDate, incomesFromSelectedPeriod);
@@ -178,7 +176,7 @@ void IncomeManager::displayIncomesOfSelectedPeriod(std::string startDate, std::s
         std::cout << "There are no incomes in given time period.\n";
 }
 
-std::vector<Income> IncomeManager::getIncomesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Income>& incomesFromSelectedPeriod) {
+std::vector<Income> IncomeManager::getIncomesFromSelectedPeriod(std::string& startDate, std::string& endDate, std::vector<Income>& incomesFromSelectedPeriod) {
     std::vector<Income>::iterator itr = incomes.begin();
     while (itr != incomes.end()) {
         if (dateManager.isDateFromSelectedPeriod(startDate, endDate, itr->getDate())) {

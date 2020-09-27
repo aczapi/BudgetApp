@@ -1,7 +1,5 @@
 #pragma once
-
 #include <string>
-#include <vector>
 #include "date.hpp"
 
 static const int MIN_YEAR = 2000;
