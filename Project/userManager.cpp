@@ -171,7 +171,7 @@ void UserManager::changeLoggedInUserPassword() {
             std::cout << "Password has been changed.\n";
             HelpMethods::doPause();
         }
-        users = userFile.loadAllUsersFromFile();  //refactor
+        users = userFile.loadAllUsersFromFile();
     }
 }
 

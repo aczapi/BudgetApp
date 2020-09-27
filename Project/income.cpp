@@ -1,5 +1,4 @@
 #include "income.hpp"
-#include <algorithm>
 
 void Income::setUserId(int userId) {
     if (userId > 0)

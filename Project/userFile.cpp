@@ -5,71 +5,65 @@ UserFile::UserFile(std::string userFileName)
     : USER_FILE_NAME_(userFileName) {}
 
 void UserFile::saveUserToFile(User user) {
-    bool fileExists = xml.Load(USER_FILE_NAME_.c_str());
+    bool fileExists = xml_.Load(USER_FILE_NAME_.c_str());
 
     if (!fileExists) {
-        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("USERS");
+        xml_.SetDoc("<?xml_ version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml_.AddElem("USERS");
     }
-    xml.FindElem();
-    xml.IntoElem();
-    xml.AddElem("USER");
-    xml.IntoElem();
-    xml.AddElem("USERID", user.getUserId());
-    xml.AddElem("NAME", user.getUserName());
-    xml.AddElem("SURNAME", user.getUserSurname());
-    xml.AddElem("LOGIN", user.getUserLogin());
-    xml.AddElem("PASSWORD", user.getUserPassword());
-    xml.Save(USER_FILE_NAME_.c_str());
+    xml_.FindElem();
+    xml_.IntoElem();
+    xml_.AddElem("USER");
+    xml_.IntoElem();
+    xml_.AddElem("USERID", user.getUserId());
+    xml_.AddElem("NAME", user.getUserName());
+    xml_.AddElem("SURNAME", user.getUserSurname());
+    xml_.AddElem("LOGIN", user.getUserLogin());
+    xml_.AddElem("PASSWORD", user.getUserPassword());
+    xml_.Save(USER_FILE_NAME_.c_str());
 }
 
 std::vector<User> UserFile::loadAllUsersFromFile() {
     std::vector<User> users;
     User user;
-    // bool fileExists = xml.Load(USER_FILE_NAME_.c_str());
 
-    //     if (!fileExists) {
-    //         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    //         xml.AddElem("USERS");
-    //     }
+    xml_.Load(USER_FILE_NAME_.c_str());
 
-    xml.Load(USER_FILE_NAME_.c_str());
-
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
-    while (xml.FindElem("USER")) {
-        xml.IntoElem();
-        xml.FindElem("USERID");
-        user.setUserId(HelpMethods::convertStringToInt(xml.GetData()));
-        xml.FindElem("NAME");
-        user.setUserName(xml.GetData());
-        xml.FindElem("SURNAME");
-        user.setUserSurname(xml.GetData());
-        xml.FindElem("LOGIN");
-        user.setUserLogin(xml.GetData());
-        xml.FindElem("PASSWORD");
-        user.setUserPassword(xml.GetData());
-        xml.OutOfElem();
+    xml_.ResetPos();
+    xml_.FindElem();
+    xml_.IntoElem();
+    while (xml_.FindElem("USER")) {
+        xml_.IntoElem();
+        xml_.FindElem("USERID");
+        user.setUserId(HelpMethods::convertStringToInt(xml_.GetData()));
+        xml_.FindElem("NAME");
+        user.setUserName(xml_.GetData());
+        xml_.FindElem("SURNAME");
+        user.setUserSurname(xml_.GetData());
+        xml_.FindElem("LOGIN");
+        user.setUserLogin(xml_.GetData());
+        xml_.FindElem("PASSWORD");
+        user.setUserPassword(xml_.GetData());
+        xml_.OutOfElem();
         users.push_back(user);
     }
     return users;
 }
 void UserFile::changeUserPasswordAtFile(int loggedInUserId, std::string newPassword) {
-    xml.Load(USER_FILE_NAME_.c_str());
+    xml_.Load(USER_FILE_NAME_.c_str());
 
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
-    while (xml.FindElem("USER")) {
-        xml.IntoElem();
-        xml.FindElem("USERID");
-        if (HelpMethods::convertStringToInt(xml.GetData()) == loggedInUserId) {
-            xml.FindElem("PASSWORD");
-            xml.SetData(newPassword);
+    xml_.ResetPos();
+    xml_.FindElem();
+    xml_.IntoElem();
+    while (xml_.FindElem("USER")) {
+        xml_.IntoElem();
+        xml_.FindElem("USERID");
+        if (HelpMethods::convertStringToInt(xml_.GetData()) == loggedInUserId) {
+            xml_.FindElem("PASSWORD");
+            xml_.SetData(newPassword);
             break;
         }
-        xml.OutOfElem();
+        xml_.OutOfElem();
     }
-    xml.Save(USER_FILE_NAME_.c_str());
+    xml_.Save(USER_FILE_NAME_.c_str());
 }

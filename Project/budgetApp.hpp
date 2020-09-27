@@ -7,10 +7,9 @@ class BudgetApplication {
 public:
     BudgetApplication(std ::string USER_FILE_NAME, std::string INCOMES_FILE_NAME, std::string EXPENSES_FILE_NAME);
     ~BudgetApplication(){};
+
     void userRegister();
     void userLogIn();
-    void displayallUsers();
-
     void changeLoggedInUserPassword();
     void userLogOut();
     bool isUserLoggedIn();
@@ -19,6 +18,10 @@ public:
     void displayBalanceOfCurrentMonth();
     void displayBalanceOfPreviousMonth();
     void displayBalanceOfSelectedPeriod();
+
+    char chooseOptionFromMainMenu();
+    char chooseOptionFromUserMenu();
+    void doPause();
 
 private:
     UserManager userManager;

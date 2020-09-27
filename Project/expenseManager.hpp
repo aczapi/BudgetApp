@@ -21,10 +21,10 @@ public:
     std::vector<Expense> sort(std::vector<Expense> expenses);
     void displayExpense(Expense& expense);
 
-    std::vector<Expense> getExpensesFromCurrentMonth();
-    std::vector<Expense> getExpensesFromPreviousMonth();
+    std::vector<Expense> getExpensesFromCurrentMonth(std::vector<Expense>& expensesFromCurrentMonth);
+    std::vector<Expense> getExpensesFromPreviousMonth(std::vector<Expense>& expensesFromPreviousMonth);
     std::vector<Expense> getExpensesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Expense>& expensesFromSelectedPeriod);
-
+    Expense ExpenseManager::addSelectedExpenses(std::vector<Expense>::iterator itr);
     float getSumOfExpenses();
 
 private:

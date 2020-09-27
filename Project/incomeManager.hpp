@@ -21,9 +21,10 @@ public:
     void displayIncome(Income& income);
 
     std::vector<Income> sort(std::vector<Income> incomes);
-    std::vector<Income> getIncomesFromCurrentMonth();
+    std::vector<Income> getIncomesFromCurrentMonth(std::vector<Income>& incomesFromCurrentMonth);
     std::vector<Income> getIncomesFromPreviousMonth(std::vector<Income>& incomesFromPreviousMonth);
     std::vector<Income> getIncomesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Income>& incomesFromSelectedPeriod);
+    Income addSelectedIncomes(std::vector<Income>::iterator itr);
     float getSumOfIncomes();
 
 private:

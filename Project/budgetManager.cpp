@@ -21,11 +21,11 @@ void BudgetManager::displayBalanceOfCurrentMonth() {
     incomeManager.displayIncomesOfCurrentMonth();
     expenseManager.displayExpensesOfCurrentMonth();
     balance = incomeManager.getSumOfIncomes() - expenseManager.getSumOfExpenses();
-    std::cout << "Balance of current month: \n";
+    std::cout << "Balance of current month - ";
     if (balance >= 0) {
-        std::cout << "You have saved: " << balance << "\n";
+        std::cout << "you have saved " << balance << "\n";
     } else {
-        std::cout << "You exceeded the budget by: " << abs(balance) << "\n";
+        std::cout << "you exceeded the budget by " << abs(balance) << "\n";
     }
     HelpMethods::doPause();
 }
@@ -35,11 +35,11 @@ void BudgetManager::displayBalanceOfPreviousMonth() {
     incomeManager.displayIncomesOfPreviousMonth();
     expenseManager.displayExpensesOfPreviousMonth();
     balance = incomeManager.getSumOfIncomes() - expenseManager.getSumOfExpenses();
-    std::cout << "Balance of previous month: \n";
+    std::cout << "Balance of previous month - ";
     if (balance >= 0) {
-        std::cout << "You have saved: " << balance << "\n";
+        std::cout << "you have saved " << balance << "\n";
     } else {
-        std::cout << "You exceeded the budget by: " << abs(balance) << "\n";
+        std::cout << "you exceeded the budget by " << abs(balance) << "\n";
     }
     HelpMethods::doPause();
 }
@@ -60,11 +60,11 @@ void BudgetManager::displayBalanceOfSelectedPeriod() {
     expenseManager.displayExpensesOfSelectedPeriod(startDate, endDate);
 
     balance = incomeManager.getSumOfIncomes() - expenseManager.getSumOfExpenses();
-    std::cout << "Balance of selected period: \n";
+    std::cout << "Balance from " << startDate << " to " << endDate << " - ";
     if (balance >= 0) {
-        std::cout << "You have saved: " << balance << "\n";
+        std::cout << "you have saved " << balance << "\n";
     } else {
-        std::cout << "You exceeded the budget by: " << abs(balance) << "\n";
+        std::cout << "you exceeded the budget by " << abs(balance) << "\n";
     }
     HelpMethods::doPause();
 }

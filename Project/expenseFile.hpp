@@ -14,6 +14,6 @@ public:
 
 private:
     const std::string EXPENSE_FILE_NAME_;
-    int numberOfExpenses;
-    CMarkup xml;
+    int numberOfExpenses_;
+    CMarkup xml_;
 };

@@ -3,84 +3,77 @@
 
 IncomeFile::IncomeFile(std::string incomeFileName)
     : INCOME_FILE_NAME_(incomeFileName) {
-    numberOfIncomes = 0;
+    numberOfIncomes_ = 0;
 }
 
 void IncomeFile::saveIncomeToFile(Income income) {
-    bool fileExists = xml.Load(INCOME_FILE_NAME_.c_str());
+    bool fileExists = xml_.Load(INCOME_FILE_NAME_.c_str());
 
     if (!fileExists) {
-        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem("INCOMES");
+        xml_.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml_.AddElem("INCOMES");
     }
-    xml.FindElem();
-    xml.IntoElem();
-    xml.AddElem("INCOME");
-    xml.IntoElem();
-    xml.AddElem("INCOMEID", income.getIncomeId());
-    xml.AddElem("USERID", income.getUserId());
-    xml.AddElem("DATE", income.getDate());
-    xml.AddElem("ITEM", income.getItem());
-    xml.AddElem("AMOUNT", HelpMethods::convertFloatToString(income.getAmount()));
-    xml.Save(INCOME_FILE_NAME_.c_str());
+    xml_.FindElem();
+    xml_.IntoElem();
+    xml_.AddElem("INCOME");
+    xml_.IntoElem();
+    xml_.AddElem("INCOMEID", income.getIncomeId());
+    xml_.AddElem("USERID", income.getUserId());
+    xml_.AddElem("DATE", income.getDate());
+    xml_.AddElem("ITEM", income.getItem());
+    xml_.AddElem("AMOUNT", HelpMethods::convertFloatToString(income.getAmount()));
+    xml_.Save(INCOME_FILE_NAME_.c_str());
 }
 
 std::vector<Income> IncomeFile::loadIncomesFromFile(int loggedInUserId) {
     std::vector<Income> incomes;
     Income income;
-    //numberOfIncomes = 0;
-    // bool fileExists = xml.Load(USER_FILE_NAME_.c_str());
 
-    //     if (!fileExists) {
-    //         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    //         xml.AddElem("USERS");
-    //     }
+    xml_.Load(INCOME_FILE_NAME_.c_str());
 
-    xml.Load(INCOME_FILE_NAME_.c_str());
+    xml_.ResetPos();
+    xml_.FindElem();
+    xml_.IntoElem();
+    while (xml_.FindElem("INCOME")) {
+        xml_.IntoElem();
 
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
-    while (xml.FindElem("INCOME")) {
-        xml.IntoElem();
-
-        xml.FindElem("USERID");
-        if (HelpMethods::convertStringToInt(xml.GetData()) == loggedInUserId) {
-            income.setUserId(HelpMethods::convertStringToInt(xml.GetData()));
-            xml.ResetMainPos();
-            xml.FindElem("INCOMEID");
-            income.setIncomeId(HelpMethods::convertStringToInt(xml.GetData()));
-            xml.FindElem("DATE");
-            income.setDate(xml.GetData());
-            xml.FindElem("ITEM");
-            income.setItem(xml.GetData());
-            xml.FindElem("AMOUNT");
-            income.setAmount(HelpMethods::convertStringToFloat(xml.GetData()));
+        xml_.FindElem("USERID");
+        if (HelpMethods::convertStringToInt(xml_.GetData()) == loggedInUserId) {
+            income.setUserId(HelpMethods::convertStringToInt(xml_.GetData()));
+            xml_.ResetMainPos();
+            xml_.FindElem("INCOMEID");
+            income.setIncomeId(HelpMethods::convertStringToInt(xml_.GetData()));
+            xml_.FindElem("DATE");
+            income.setDate(xml_.GetData());
+            xml_.FindElem("ITEM");
+            income.setItem(xml_.GetData());
+            xml_.FindElem("AMOUNT");
+            income.setAmount(HelpMethods::convertStringToFloat(xml_.GetData()));
 
             incomes.push_back(income);
         }
 
-        xml.OutOfElem();
+        xml_.OutOfElem();
     }
 
     return incomes;
 }
 
 int IncomeFile::getIdOfLastIncome() {
-    int numberOfIncomes = 0;
+    int numberOfIncomes_ = 0;
 
-    bool fileExists = xml.Load(INCOME_FILE_NAME_.c_str());
+    bool fileExists = xml_.Load(INCOME_FILE_NAME_.c_str());
 
     if (!fileExists) {
-        return numberOfIncomes;
+        return numberOfIncomes_;
     }
 
-    xml.FindElem();
-    xml.IntoElem();
+    xml_.FindElem();
+    xml_.IntoElem();
 
-    while (xml.FindElem("INCOME")) {
-        numberOfIncomes++;
+    while (xml_.FindElem("INCOME")) {
+        numberOfIncomes_++;
     }
 
-    return numberOfIncomes;
+    return numberOfIncomes_;
 }

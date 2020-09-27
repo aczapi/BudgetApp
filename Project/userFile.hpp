@@ -12,10 +12,7 @@ public:
     std::vector<User> loadAllUsersFromFile();
     void changeUserPasswordAtFile(int loggedInUserId, std::string newPassword);
 
-    // std::string getFileName();
-    // bool isFileEmpty();
-
 private:
     const std::string USER_FILE_NAME_;
-    CMarkup xml;
+    CMarkup xml_;
 };

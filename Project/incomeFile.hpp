@@ -13,6 +13,6 @@ public:
 
 private:
     const std::string INCOME_FILE_NAME_;
-    int numberOfIncomes;
-    CMarkup xml;
+    int numberOfIncomes_;
+    CMarkup xml_;
 };

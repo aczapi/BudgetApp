@@ -39,44 +39,6 @@ void HelpMethods::doPause() {
     std::cin.get();
 }
 
-char HelpMethods::chooseOptionFromMainMenu() {
-    char choice;
-
-    system("clear");
-    std::cout << "    >>> MAIN MENU  <<<\n";
-    std::cout << "---------------------------\n";
-    std::cout << "1. Register\n";
-    std::cout << "2. Log in\n";
-    std::cout << "9. Exit\n";
-    std::cout << "---------------------------\n";
-    std::cout << "You choose: \n";
-    choice = getChar();
-
-    return choice;
-}
-
-char HelpMethods::chooseOptionFromUserMenu() {
-    char choice;
-
-    std::cin.ignore();
-    system("clear");
-    std::cout << " >>> USER MENU <<<\n";
-    std::cout << "---------------------------\n";
-    std::cout << "1. Add income.\n";
-    std::cout << "2. Add expense.\n";
-    std::cout << "3. Display financial balance of the current month.\n";
-    std::cout << "4. Display financial balance prom previous month.\n";
-    std::cout << "5. Display financial balance from selected period.\n";
-    std::cout << "---------------------------\n";
-    std::cout << "6. Change password.\n";
-    std::cout << "7. Log out.\n";
-    std::cout << "---------------------------\n";
-    std::cout << "You choose: \n";
-    choice = getChar();
-
-    return choice;
-}
-
 std::string HelpMethods::getLine() {
     std::string input = "";
     getline(std::cin, input);

@@ -1,9 +1,7 @@
-#include <ctime>
-
-#include "stdio.h"
-
 #include "dateManager.hpp"
+#include <ctime>
 #include "helpMethods.hpp"
+#include "stdio.h"
 
 DateManager::DateManager()
     : START_DATE_("2000-01-01"), SECONDS_PER_DAY_(86400) {
@@ -98,15 +96,15 @@ bool DateManager::isBeforeLastDayOfCurrentMonth(const Date& date, const Date& to
 std::string DateManager::getWrongDateErrorMessage(WrongDate error) {
     switch (error) {
     case WrongDate::Ok:
-        return "Date is correct";
+        return "";
     case WrongDate::WrongFormat:
-        return "Date should be in format yyyy-mm-dd";
+        return "Date should be in format yyyy-mm-dd.";
     case WrongDate::IncorrectDate:
-        return "Date is incorrect";
+        return "Date is incorrect.";
     case WrongDate::NotALeapYear:
-        return "It is not a leap year";
+        return "It is not a leap year.";
     case WrongDate::BeforeLastDayOfCurrentMonth:
-        return "Date has to be up to the last day of the current month";
+        return "Date has to be up to the last day of the current month.";
     }
     return {};
 }

@@ -1,20 +1,14 @@
 #include <iostream>
-#include "helpMethods.hpp"  //refactor later
-
-#include "budgetApp.hpp"
-
 #include "Markup.h"
+#include "budgetApp.hpp"
 
 int main() {
     BudgetApplication budgetApplication("Users.xml", "Incomes.xml", "Expenses.xml");
     char choice;
-    IncomeManager incomeManager("Income.xml", 1);
-    Income income;
-    IncomeFile IncomeFile("Incomes.xml");
 
     while (true) {
         if (!budgetApplication.isUserLoggedIn()) {
-            choice = HelpMethods::chooseOptionFromMainMenu();
+            choice = budgetApplication.chooseOptionFromMainMenu();
 
             switch (choice) {
             case '1':
@@ -28,11 +22,11 @@ int main() {
                 break;
             default:
                 std::cout << "Not an option.\n";
-                HelpMethods::doPause();
+                budgetApplication.doPause();
                 break;
             }
         } else {
-            choice = HelpMethods::chooseOptionFromUserMenu();
+            choice = budgetApplication.chooseOptionFromUserMenu();
 
             switch (choice) {
             case '1':
@@ -59,11 +53,10 @@ int main() {
                 break;
             default:
                 std::cout << "Not an option.\n";
-                HelpMethods::doPause();
+                budgetApplication.doPause();
                 break;
             }
         }
     }
-
     return 0;
 }

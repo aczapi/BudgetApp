@@ -62,31 +62,10 @@ std::vector<Income> IncomeManager::sort(std::vector<Income> incomes) {
 }
 
 void IncomeManager::displayIncome(Income& income) {
-    // std::cout.precision(2);
     std::cout << "\nIncome's ID:      " << income.getIncomeId() << "\n";
     std::cout << "Date:             " << income.getDate() << "\n";
     std::cout << "Kind of income:   " << income.getItem() << "\n";
     std::cout << "Amount:           " << income.getAmount() << "\n";
-}
-
-void IncomeManager::displayIncomesOfCurrentMonth() {
-    std::vector<Income> incomesFromCurrentMonth;
-    incomesFromCurrentMonth = getIncomesFromCurrentMonth();
-    std::vector<Income> sortedIncomesFromCurrentMonth{};
-    sortedIncomesFromCurrentMonth = sort(incomesFromCurrentMonth);
-
-    sumOfIncomes = 0.0;
-
-    std::vector<Income>::iterator itr = sortedIncomesFromCurrentMonth.begin();
-    std::cout << "INCOMES: \n";
-    while (itr != sortedIncomesFromCurrentMonth.end()) {
-        if (dateManager.isDateFromCurrentMonth(itr->getDate())) {
-            sumOfIncomes += itr->getAmount();
-            displayIncome(*itr);
-        }
-        itr++;
-    }
-    std::cout << "\nSum of incomes from current month is: " << sumOfIncomes << "\n\n";
 }
 
 float IncomeManager::getSumOfIncomes() {
@@ -97,19 +76,46 @@ bool operator<(Income& firstIncome, Income& secondIncome) {
     return firstIncome.getDateAsInt() < secondIncome.getDateAsInt();
 }
 
-std::vector<Income> IncomeManager::getIncomesFromCurrentMonth() {
+void IncomeManager::displayIncomesOfCurrentMonth() {
+    sumOfIncomes = 0.0;
     std::vector<Income> incomesFromCurrentMonth{};
+    incomesFromCurrentMonth = getIncomesFromCurrentMonth(incomesFromCurrentMonth);
+
+    if (!incomesFromCurrentMonth.empty()) {
+        std::vector<Income> sortedIncomesFromCurrentMonth{};
+        sortedIncomesFromCurrentMonth = sort(incomesFromCurrentMonth);
+
+        std::vector<Income>::iterator itr = sortedIncomesFromCurrentMonth.begin();
+        std::cout << "INCOMES: \n";
+        while (itr != sortedIncomesFromCurrentMonth.end()) {
+            if (dateManager.isDateFromCurrentMonth(itr->getDate())) {
+                sumOfIncomes += itr->getAmount();
+                displayIncome(*itr);
+            }
+            itr++;
+        }
+        std::cout << "\nSum of incomes from current month is: " << sumOfIncomes << "\n\n";
+
+    } else
+        std::cout << "There are no incomes in current month.\n";
+}
+
+Income IncomeManager::addSelectedIncomes(std::vector<Income>::iterator itr) {
+    income.setIncomeId(itr->getIncomeId());
+    income.setUserId(itr->getUserId());
+    income.setDate(itr->getDate());
+    income.setItem(itr->getItem());
+    income.setAmount(itr->getAmount());
+    income.setDateAsInt(dateManager.convertDateToLongInt(itr->getDate()));
+
+    return income;
+}
+
+std::vector<Income> IncomeManager::getIncomesFromCurrentMonth(std::vector<Income>& incomesFromCurrentMonth) {
     std::vector<Income>::iterator itr = incomes.begin();
     while (itr != incomes.end()) {
         if (dateManager.isDateFromCurrentMonth(itr->getDate())) {
-            income.setIncomeId(itr->getIncomeId());
-            income.setUserId(itr->getUserId());
-            income.setDate(itr->getDate());
-            income.setItem(itr->getItem());
-            income.setAmount(itr->getAmount());
-            income.setDateAsInt(dateManager.convertDateToLongInt(itr->getDate()));
-
-            incomesFromCurrentMonth.push_back(income);
+            incomesFromCurrentMonth.push_back(addSelectedIncomes(itr));
         }
         itr++;
     }
@@ -117,38 +123,33 @@ std::vector<Income> IncomeManager::getIncomesFromCurrentMonth() {
 }
 
 void IncomeManager::displayIncomesOfPreviousMonth() {
+    sumOfIncomes = 0.0;
     std::vector<Income> incomesFromPreviousMonth{};
     incomesFromPreviousMonth = getIncomesFromPreviousMonth(incomesFromPreviousMonth);
-    std::vector<Income> sortedIncomesFromPreviousMonth{};
-    sortedIncomesFromPreviousMonth = sort(incomesFromPreviousMonth);
 
-    sumOfIncomes = 0.0;
+    if (!incomesFromPreviousMonth.empty()) {
+        std::vector<Income> sortedIncomesFromPreviousMonth{};
+        sortedIncomesFromPreviousMonth = sort(incomesFromPreviousMonth);
 
-    std::vector<Income>::iterator itr = sortedIncomesFromPreviousMonth.begin();
-    std::cout << "INCOMES: \n";
-    while (itr != sortedIncomesFromPreviousMonth.end()) {
-        if (dateManager.isDateFromPreviousMonth(itr->getDate())) {
-            sumOfIncomes += itr->getAmount();
-            displayIncome(*itr);
+        std::vector<Income>::iterator itr = sortedIncomesFromPreviousMonth.begin();
+        std::cout << "INCOMES: \n";
+        while (itr != sortedIncomesFromPreviousMonth.end()) {
+            if (dateManager.isDateFromPreviousMonth(itr->getDate())) {
+                sumOfIncomes += itr->getAmount();
+                displayIncome(*itr);
+            }
+            itr++;
         }
-        itr++;
-    }
-    std::cout << "\nSum of incomes from previous month is: " << sumOfIncomes << "\n\n";
+        std::cout << "\nSum of incomes from previous month is: " << sumOfIncomes << "\n\n";
+    } else
+        std::cout << "There are no incomes in previous month.\n";
 }
 
 std::vector<Income> IncomeManager::getIncomesFromPreviousMonth(std::vector<Income>& incomesFromPreviousMonth) {
-    //std::vector<Income> incomesFromPreviousMonth{};
     std::vector<Income>::iterator itr = incomes.begin();
     while (itr != incomes.end()) {
         if (dateManager.isDateFromPreviousMonth(itr->getDate())) {
-            income.setIncomeId(itr->getIncomeId());
-            income.setUserId(itr->getUserId());
-            income.setDate(itr->getDate());
-            income.setItem(itr->getItem());
-            income.setAmount(itr->getAmount());
-            income.setDateAsInt(dateManager.convertDateToLongInt(itr->getDate()));
-
-            incomesFromPreviousMonth.push_back(income);
+            incomesFromPreviousMonth.push_back(addSelectedIncomes(itr));
         }
         itr++;
     }
@@ -156,38 +157,32 @@ std::vector<Income> IncomeManager::getIncomesFromPreviousMonth(std::vector<Incom
 }
 
 void IncomeManager::displayIncomesOfSelectedPeriod(std::string startDate, std::string endDate) {
+    sumOfIncomes = 0.0;
     std::vector<Income> incomesFromSelectedPeriod{};
     incomesFromSelectedPeriod = getIncomesFromSelectedPeriod(startDate, endDate, incomesFromSelectedPeriod);
-    std::vector<Income> sortedIncomesFromSelectedPeriod{};
-    sortedIncomesFromSelectedPeriod = sort(incomesFromSelectedPeriod);
 
-    sumOfIncomes = 0.0;
-
-    std::vector<Income>::iterator itr = sortedIncomesFromSelectedPeriod.begin();
-    std::cout << "INCOMES: \n";
-    while (itr != sortedIncomesFromSelectedPeriod.end()) {
-        if (dateManager.isDateFromSelectedPeriod(startDate, endDate, itr->getDate())) {
-            sumOfIncomes += itr->getAmount();
-            displayIncome(*itr);
+    if (!incomesFromSelectedPeriod.empty()) {
+        std::vector<Income> sortedIncomesFromSelectedPeriod{};
+        sortedIncomesFromSelectedPeriod = sort(incomesFromSelectedPeriod);
+        std::vector<Income>::iterator itr = sortedIncomesFromSelectedPeriod.begin();
+        std::cout << "INCOMES: \n";
+        while (itr != sortedIncomesFromSelectedPeriod.end()) {
+            if (dateManager.isDateFromSelectedPeriod(startDate, endDate, itr->getDate())) {
+                sumOfIncomes += itr->getAmount();
+                displayIncome(*itr);
+            }
+            itr++;
         }
-        itr++;
-    }
-    std::cout << "\nSum of incomes from selected period is: " << sumOfIncomes << "\n\n";
+        std::cout << "\nSum of incomes from " << startDate << " to " << endDate << " is " << sumOfIncomes << "\n\n";
+    } else
+        std::cout << "There are no incomes in given time period.\n";
 }
 
 std::vector<Income> IncomeManager::getIncomesFromSelectedPeriod(std::string startDate, std::string endDate, std::vector<Income>& incomesFromSelectedPeriod) {
-    //std::vector<Income> incomesFromPreviousMonth{};
     std::vector<Income>::iterator itr = incomes.begin();
     while (itr != incomes.end()) {
         if (dateManager.isDateFromSelectedPeriod(startDate, endDate, itr->getDate())) {
-            income.setIncomeId(itr->getIncomeId());
-            income.setUserId(itr->getUserId());
-            income.setDate(itr->getDate());
-            income.setItem(itr->getItem());
-            income.setAmount(itr->getAmount());
-            income.setDateAsInt(dateManager.convertDateToLongInt(itr->getDate()));
-
-            incomesFromSelectedPeriod.push_back(income);
+            incomesFromSelectedPeriod.push_back(addSelectedIncomes(itr));
         }
         itr++;
     }
